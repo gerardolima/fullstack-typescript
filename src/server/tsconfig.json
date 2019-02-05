@@ -5,7 +5,7 @@
     "module": "commonjs",
     "importHelpers": true,
     "allowJs": true,
-    "outDir": "../../dist/server-root",
+    "outDir": "../../dist",
     "rootDir": "..",
     "lib": ["es6"],
     "moduleResolution": "node",
