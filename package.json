@@ -1,6 +1,6 @@
 {
-  "name": "fullstack-typescript",
-  "version": "1.0.0",
+  "name": "paranjana",
+  "version": "0.2.0",
   "description": "",
   "main": "./dist/server/main.js",
   "engines": {
@@ -8,18 +8,16 @@
   },
   "scripts": {
     "test": "jest",
-    "clean": "rm -rf dist",
+    "cover": "jest --collectCoverage",
+    "clean": "rm -rf dist coverage",
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
-
     "start": "NODE_ENV=production node ./dist/server/main.js",
     "build": "npm run clean && concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run build-server\" \"npm run build-client\"",
     "build-client": "NODE_ENV=production webpack -p",
     "build-server": "NODE_ENV=production tsc -p ./src/server",
-
     "dev": "npm run clean && concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev-server\" \"npm run dev-client\"",
     "dev-client": "webpack-dev-server -w",
     "dev-server": "tsc-watch -p ./src/server --onSuccess \"node ./dist/server/main.js\"",
-
     "hot": "npm run clean && concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev-server\" \"npm run hot-client\"",
     "hot-client": "webpack-dev-server -w --hot"
   },
@@ -69,7 +67,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfig": "<rootDir>/src/tsconfig-for-tests.json"
+        "tsConfig": "<rootDir>/tsconfig.test.json"
       }
     }
   },
