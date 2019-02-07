@@ -16,7 +16,7 @@ export function staticsDevRouter() {
   router.use('**', proxy(
     {
       target: `http://localhost:${DEV_PORT}`,
-      pathRewrite: path => '/public/index.html',
+      pathRewrite: (path: string) => '/public/index.html',
     }));
 
   return router;

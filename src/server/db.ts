@@ -19,5 +19,7 @@ export const users: IUserDTO[] = [
 ];
 
 export function getUserById(userId: string): IUserDTO {
-  return users.find(u => u.userId === userId);
+  const user = users.find(u => u.userId === userId);
+  if (user === undefined) { throw new Error('user not found'); }
+  return user;
 }
