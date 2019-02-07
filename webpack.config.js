@@ -3,8 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const cssnano = require('cssnano');
 
-const config = require('./src/server/config');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+
+const dotenv = require('dotenv');
+// TODO: check expected env variables
+dotenv.config({path: path.join(__dirname, '..', '.env')});
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const SERVER_PORT = process.env.PORT || '3000';
+
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -18,15 +24,15 @@ const plugins = [
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 //plugins.push(new BundleAnalyzerPlugin());
 
-if (!config.IS_PRODUCTION) {
+if (!IS_PRODUCTION) {
   plugins.push(
-    new OpenBrowserPlugin({ url: `http://localhost:${config.SERVER_PORT}` }),
+    new OpenBrowserPlugin({ url: `http://localhost:${SERVER_PORT}` }),
   );
 }
 
 module.exports = {
-  mode: config.IS_PRODUCTION ? 'production' : 'development',
-  devtool: config.IS_PRODUCTION ? '' : 'inline-source-map',
+  mode: IS_PRODUCTION ? 'production' : 'development',
+  devtool: IS_PRODUCTION ? '' : 'inline-source-map',
   entry: ['@babel/polyfill', './src/client/client'],
   output: {
     path: path.join(__dirname, 'dist', 'public'),
@@ -65,14 +71,14 @@ module.exports = {
             options: {
               modules: true,
               camelCase: true,
-              sourceMap: !config.IS_PRODUCTION,
+              sourceMap: !IS_PRODUCTION,
             },
           },
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: !config.IS_PRODUCTION,
-              plugins: config.IS_PRODUCTION ? [] : [cssnano()],
+              sourceMap: !IS_PRODUCTION,
+              plugins: IS_PRODUCTION ? [] : [cssnano()],
             },
           },
         ],
