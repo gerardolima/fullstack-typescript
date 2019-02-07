@@ -9,6 +9,7 @@ import * as dotenv from 'dotenv';
 dotenv.config({path: path.join(__dirname, '.env')});
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const SERVER_PORT = process.env.PORT || '3000';
+const DEV_PORT = process.env.DEV_PORT || '8080';
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -35,7 +36,7 @@ module.exports = {
     watchContentBase: true,
     open: true,
     public: `http://localhost:${SERVER_PORT}`,
-    port: '8080'
+    port: DEV_PORT
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
