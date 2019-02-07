@@ -39,6 +39,9 @@ module.exports = {
     filename: `[name]-[hash:8]-bundle.js`,
     publicPath: '/public/',
   },
+  devServer: {
+    watchContentBase: true
+  },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
   },
