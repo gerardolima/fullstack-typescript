@@ -1,16 +1,15 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const cssnano = require('cssnano');
+import * as path from 'path';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as OpenBrowserPlugin from 'open-browser-webpack-plugin';
+import * as cssnano from 'cssnano';
 
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
-const dotenv = require('dotenv');
+import * as dotenv from 'dotenv';
 // TODO: check expected env variables
 dotenv.config({path: path.join(__dirname, '..', '.env')});
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const SERVER_PORT = process.env.PORT || '3000';
-
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -21,10 +20,11 @@ const plugins = [
   }),
 ];
 
-//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-//plugins.push(new BundleAnalyzerPlugin());
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// plugins.push(new BundleAnalyzerPlugin());
 
 if (!IS_PRODUCTION) {
+  console.debug(OpenBrowserPlugin);
   plugins.push(
     new OpenBrowserPlugin({ url: `http://localhost:${SERVER_PORT}` }),
   );
