@@ -1,13 +1,12 @@
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as OpenBrowserPlugin from 'open-browser-webpack-plugin';
 import * as cssnano from 'cssnano';
 
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 import * as dotenv from 'dotenv';
 // TODO: check expected env variables
-dotenv.config({path: path.join(__dirname, '..', '.env')});
+dotenv.config({path: path.join(__dirname, '.env')});
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const SERVER_PORT = process.env.PORT || '3000';
 
@@ -23,13 +22,6 @@ const plugins = [
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // plugins.push(new BundleAnalyzerPlugin());
 
-if (!IS_PRODUCTION) {
-  console.debug(OpenBrowserPlugin);
-  plugins.push(
-    new OpenBrowserPlugin({ url: `http://localhost:${SERVER_PORT}` }),
-  );
-}
-
 module.exports = {
   mode: IS_PRODUCTION ? 'production' : 'development',
   devtool: IS_PRODUCTION ? '' : 'inline-source-map',
@@ -40,7 +32,10 @@ module.exports = {
     publicPath: '/public/',
   },
   devServer: {
-    watchContentBase: true
+    watchContentBase: true,
+    open: true,
+    public: `http://localhost:${SERVER_PORT}`,
+    port: '8080'
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
