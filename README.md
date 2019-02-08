@@ -4,6 +4,14 @@
 
 ---
 
+### Usage
+
+- `npm run dev` - Client and server are in watch mode with source maps, opens [http://localhost:3000](http://localhost:3000)
+- `npm run test` - Runs jest tests
+- `npm run cover` - Runs jest coverage tests
+- `npm run build` - `dist` folder will include all the needed files, both client (Bundle) and server.
+- `npm start` - Just runs `node ./dist/server/server.js`
+
 ### Directory Layout
 
 ```
@@ -14,27 +22,26 @@
 │   ├── /client/            # React app
 │   ├── /server/            # Express server app
 │   ├── /shared/            # The shared code between the client and the server
-├── /assets/                # images, css, jsons etc.
-├── .babelrc                # babel configuration
+├── /assets/                # images, css, json etc.
 ├── .gitignore              # ignored git files and folders
-├── .nvmrc                  # Force nodejs version
 ├── package.json            # The list of 3rd party libraries and utilities
-└── tslint.json             # TypeScript linting configuration file
+├── tsconfig.json           # TypeScript compiler settings
+├── tsconfig.test.json      # TypeScript compiler settings (optimized for tests)
+├── tslint.json             # TypeScript linting configuration file
+├── webpack.config.ts       # Bundler for the client-side application
 ├── README.md               # This file
+└── .env                    # use this file to set values to the env variables
 ```
 
-### Usage
-
-- `npm run dev` - Client and server are in watch mode with source maps, opens [http://localhost:3000](http://localhost:3000)
-- `npm run test` - Runs jest tests
-- `npm run cover` - Runs jest coverage tests
-- `npm run build` - `dist` folder will include all the needed files, both client (Bundle) and server.
-- `npm start` - Just runs `node ./dist/server/server.js`
-
 #### ENV
+The following environment variables are used by the application and/or by the
+build process:
 - NODE_ENV=development
 - PORT=3000
 - DEV_PORT=8080
+
+These variables can be set at the `.env` file, but this file should **not** be
+be committed into the repository
 
 ### What's included
 
