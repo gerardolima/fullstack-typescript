@@ -3,6 +3,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as cssnano from 'cssnano';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 import * as dotenv from 'dotenv';
+import * as HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 // TODO: check expected env variables
 dotenv.config({path: path.join(__dirname, '.env')});
@@ -44,6 +45,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader',
+        options: {
+          useCache: true,
+          isolatedModules: true,
+        }
       },
       {
         test: /\.css$/,
@@ -82,6 +87,7 @@ module.exports = {
       filename: 'index.html',
       template: './src/client/index.ejs',
     }),
+    new HardSourceWebpackPlugin(),
   ],
   externals: {
     'react': 'React',
