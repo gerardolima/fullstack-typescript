@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
     "sourceMap": false,
     "noEmit": true,
     "isolatedModules": true,

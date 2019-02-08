@@ -16,7 +16,7 @@ interface IState {
 }
 
 export class UsersList extends React.Component<any, IState> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       users: [],
@@ -65,7 +65,9 @@ export class UsersList extends React.Component<any, IState> {
     this.setState({ users, isLoading: false });
   }
 
-  private getUserById(userId) {
-    return this.state.users.find(u => u.userId === userId);
+  private getUserById(userId: string) {
+    const user = this.state.users.find(u => u.userId === userId);
+    if (user === undefined) { throw new Error('User not found'); }
+    return user;
   }
 }

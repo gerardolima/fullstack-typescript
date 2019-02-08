@@ -8,5 +8,6 @@
     "strict": true,
     "sourceMap": true,
     "outDir": "./dist",
+    "jsx": "react",
   }
 }
