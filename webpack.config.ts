@@ -1,9 +1,9 @@
-import * as path from 'path';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as cssnano from 'cssnano';
 import { CheckerPlugin } from 'awesome-typescript-loader';
+import * as cssnano from 'cssnano';
 import * as dotenv from 'dotenv';
 import * as HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as path from 'path';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // TODO: check expected env variables

@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import { Router } from 'express';
+
 import { users, getUserById } from '../db';
 
 export function apiRouter() {

@@ -1,6 +1,6 @@
-import * as path from 'path';
 import * as express from 'express';
 import { Router } from 'express';
+import * as path from 'path';
 
 export function staticsRouter() {
   const router = Router();

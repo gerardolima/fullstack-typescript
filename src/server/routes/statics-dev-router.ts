@@ -1,5 +1,5 @@
-import * as proxy from 'http-proxy-middleware';
 import { Router } from 'express';
+import * as proxy from 'http-proxy-middleware';
 
 const DEV_PORT = process.env.DEV_PORT || '8080';
 

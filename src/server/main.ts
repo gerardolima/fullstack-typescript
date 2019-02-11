@@ -1,11 +1,13 @@
 
-import * as express from 'express';
-import { apiRouter } from './routes/api-router';
-import { staticsRouter } from './routes/statics-router';
-import { staticsDevRouter } from './routes/statics-dev-router';
-import { getVersion } from '../shared/utils';
-import * as path from 'path';
 import * as dotenv from 'dotenv';
+import * as express from 'express';
+import * as path from 'path';
+
+import { getVersion } from '../shared/utils';
+
+import { apiRouter } from './routes/api-router';
+import { staticsDevRouter } from './routes/statics-dev-router';
+import { staticsRouter } from './routes/statics-router';
 
 // TODO: check expected env variables
 dotenv.config({path: path.join(__dirname, '..', '.env')});

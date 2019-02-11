@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { IUserDTO } from '../../shared/IUserDTO';
 
 export function loadUsersAPI() {

@@ -10,7 +10,7 @@
     "test": "jest",
     "cover": "jest --collectCoverage",
     "clean": "rm -rf dist coverage",
-    "lint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "NODE_ENV=production node ./dist/server/main.js",
     "build": "npm run clean && concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run build-server\" \"npm run build-client\"",
     "build-client": "NODE_ENV=production webpack -p",
