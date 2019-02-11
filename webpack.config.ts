@@ -4,6 +4,7 @@ import * as cssnano from 'cssnano';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 import * as dotenv from 'dotenv';
 import * as HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // TODO: check expected env variables
 dotenv.config({path: path.join(__dirname, '.env')});
@@ -88,9 +89,10 @@ module.exports = {
       template: './src/client/index.ejs',
     }),
     new HardSourceWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
+     'react': 'React',
+     'react-dom': 'ReactDOM',
   },
 };
