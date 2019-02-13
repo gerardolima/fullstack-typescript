@@ -50,9 +50,7 @@ const buildConfig: webpack.Configuration = {
     publicPath: '/public/',
   },
   devServer: {
-    watchContentBase: true,
     open: true,
-    public: `http://localhost:${SERVER_PORT}`,
     port: parseInt(DEV_PORT, 10)
   },
   resolve: {
