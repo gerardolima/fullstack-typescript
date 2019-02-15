@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "cover": "jest --collectCoverage",
-    "clean": "rm -rf dist coverage",
+    "clean": "if [ -d dist ]; then rm -rf dist; fi",
+    "clean-all": "if [ -d dist ] || [ -d coverage ] || [ -d .awcache ] ; then rm -rf dist coverage .awcache; fi",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "NODE_ENV=production node ./dist/server/main.js",
     "build": "npm run clean && concurrently --prefix '[{name}]' --names 'SERVER,CLIENT' -c 'bgBlue,bgGreen' 'npm run build-server' 'npm run build-client'",
