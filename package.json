@@ -16,10 +16,8 @@
     "build-client": "NODE_ENV=production webpack -p",
     "build-server": "NODE_ENV=production tsc -p ./src/server",
     "dev": "npm run clean && concurrently --prefix '[{name}]' --names 'SERVER,CLIENT' -c 'bgBlue,bgGreen' 'npm run dev-server' 'npm run dev-client'",
-    "dev-client": "webpack-dev-server",
-    "dev-server": "tsc-watch -p ./src/server --onSuccess 'node ./dist/server/main.js'",
-    "hot": "npm run clean && concurrently --prefix '[{name}]' --names 'SERVER,CLIENT' -c 'bgBlue,bgGreen' 'npm run dev-server' 'npm run hot-client'",
-    "hot-client": "webpack-dev-server --hot"
+    "dev-client": "webpack-dev-server --hot",
+    "dev-server": "tsc-watch -p ./src/server --onSuccess 'node ./dist/server/main.js'"
   },
   "prettier": {
     "trailingComma": "all",
